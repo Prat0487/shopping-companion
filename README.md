@@ -1,40 +1,23 @@
-# Shopping Companion
+# Archived Shopping App
 
-Decision-first personal shopping superapp: compare products, track prices, manage a wishlist, and stay on budget.
+This is a complete snapshot of the **decision-first personal shopping superapp** from commit `3d02ab4`, just before the Zomato-style "Bite" food redesign replaced it.
 
-This repository is the archived shopping app extracted from [`Prat0487/shopping-app`](https://github.com/Prat0487/shopping-app) (`archive/shopping-app`). The original repo now hosts the Bite food-ordering app.
+## What is here
 
-## Features
+- `src/components/shop/` — UI components (app shell, product card, budget card, price chart, compare bar, sparkline, empty state).
+- `src/lib/shop/` — data layer, comparison engine, and persisted store.
+- `src/routes/` — route pages for home, search, product detail, compare, wishlist, alerts, orders, returns, and profile.
+- `src/router.tsx`, `src/routeTree.gen.ts`, `src/styles.css`, `src/start.ts`, `src/server.ts` — the TanStack Start wiring as it existed at that point.
 
-- Home dashboard with personalized feed, price drops, and pending deliveries
-- Unified product search with price, rating, and discount filters
-- Side-by-side comparison for 2–4 products with a weighted best-value recommendation
-- Wishlist collections with notes and target prices
-- 12-week price history charts
-- Orders and returns tracking
-- Monthly budget guardrails
-- Saved addresses and masked payment methods
+## How to reuse it in another project
 
-## Tech stack
-
-- TanStack Start + React 19 + TypeScript
-- Tailwind CSS v4 + shadcn/ui
-- Client-side persistence via `localStorage`
-
-## Development
-
-You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone https://github.com/Prat0487/shopping-companion.git
-cd shopping-companion
-npm i
-npm run dev
-```
-
-Sample product data is seeded so the app feels complete on first load.
+1. Open the target Lovable project.
+2. Copy the `src/` folder from this archive into that project.
+3. Resolve any duplicate route files (e.g., `src/routes/index.tsx`, `src/routes/search.tsx`, `src/routes/profile.tsx`) by keeping the shopping versions or merging them.
+4. Install the same dependencies if needed (the original used `motion`, `lucide-react`, and shadcn/ui components already present in the template).
+5. Run the dev server and verify the routes.
 
 ## Notes
 
-- Persistence uses `localStorage`. If you also run the Bite app on the same origin, storage keys may overlap — use a different browser profile or clear storage when switching.
+- The app uses `localStorage` for persistence. If you run both this archive and the current Bite app on the same origin, their storage keys may overlap — use a different browser profile or clear storage when switching.
 - This is a client-side-only build; no backend or database is required.
